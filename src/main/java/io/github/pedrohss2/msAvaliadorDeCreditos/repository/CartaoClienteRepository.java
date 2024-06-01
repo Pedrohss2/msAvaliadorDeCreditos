@@ -1,5 +1,6 @@
 package io.github.pedrohss2.msAvaliadorDeCreditos.repository;
 
+import io.github.pedrohss2.msAvaliadorDeCreditos.model.Cartao;
 import io.github.pedrohss2.msAvaliadorDeCreditos.model.CartaoCliente;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -13,5 +14,8 @@ public interface CartaoClienteRepository {
 
     @GetMapping(params = "cpf")
     ResponseEntity<List<CartaoCliente>> procurarPorCpf(@RequestParam(name = "cpf", defaultValue = "") String cpf);
+
+    @GetMapping(params = "renda")
+    public ResponseEntity<List<Cartao>> procurarPorRenda(@RequestParam(value = "renda", defaultValue = "") Long renda);
 
 }
