@@ -2,9 +2,7 @@ package io.github.pedrohss2.msAvaliadorDeCreditos.controller;
 
 import io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception.ComunicacaoException;
 import io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception.DadosClienteNaoEncontradoException;
-import io.github.pedrohss2.msAvaliadorDeCreditos.model.DadosAvaliacao;
-import io.github.pedrohss2.msAvaliadorDeCreditos.model.RetornoAvaliacaoCliente;
-import io.github.pedrohss2.msAvaliadorDeCreditos.model.SituacaoCliente;
+import io.github.pedrohss2.msAvaliadorDeCreditos.model.*;
 import io.github.pedrohss2.msAvaliadorDeCreditos.service.AvaliadorCreditoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,11 +23,11 @@ public class AvaliadorCreditoController {
 
             return ResponseEntity.ok().body(situacaoCliente);
         }
-        catch (DadosClienteNaoEncontradoException e) {
+        catch (DadosClienteNaoEncontradoException erro) {
             return ResponseEntity.notFound().build();
         }
-        catch (ComunicacaoException e) {
-            return ResponseEntity.status(HttpStatus.MULTI_STATUS).body(e.getMessage());
+        catch (ComunicacaoException erro) {
+            return ResponseEntity.status(HttpStatus.MULTI_STATUS).body(erro.getMessage());
         }
     }
 
@@ -40,11 +38,11 @@ public class AvaliadorCreditoController {
 
             return ResponseEntity.ok().body(retornoAvaliacaoCliente);
         }
-        catch (DadosClienteNaoEncontradoException e) {
+        catch (DadosClienteNaoEncontradoException erro) {
             return ResponseEntity.notFound().build();
         }
-        catch (ComunicacaoException e) {
-            return ResponseEntity.status(HttpStatus.MULTI_STATUS).body(e.getMessage());
+        catch (ComunicacaoException erro) {
+            return ResponseEntity.status(HttpStatus.MULTI_STATUS).body(erro.getMessage());
         }
     }
 

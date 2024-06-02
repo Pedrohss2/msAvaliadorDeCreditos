@@ -3,7 +3,9 @@ package io.github.pedrohss2.msAvaliadorDeCreditos.service;
 import feign.FeignException;
 import io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception.ComunicacaoException;
 import io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception.DadosClienteNaoEncontradoException;
+import io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception.SolicitacaoCartaoException;
 import io.github.pedrohss2.msAvaliadorDeCreditos.model.*;
+import io.github.pedrohss2.msAvaliadorDeCreditos.mqueue.EmissaoCartaoPublisher;
 import io.github.pedrohss2.msAvaliadorDeCreditos.repository.CartaoClienteRepository;
 import io.github.pedrohss2.msAvaliadorDeCreditos.repository.ClientesRepository;
 import org.apache.http.protocol.HTTP;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,6 +51,7 @@ public class AvaliadorCreditoService {
 
     public RetornoAvaliacaoCliente realizarAvaliacaoCliente(String cpf, Long renda) {
         try {
+
             ResponseEntity<DadosCliente> dadosClientes = clientesRepository.buscarPorCpf(cpf);
             ResponseEntity<List<Cartao>> procurarPorRenda = cartaoClienteRepository.procurarPorRenda(renda);
 
@@ -65,7 +69,7 @@ public class AvaliadorCreditoService {
         }
     }
 
-    public List<CartaoAprovado> fazerCalculoDeLimiteParaCartao(List<Cartao> cartaos, Integer idadeCliente, Long renda) {
+    private List<CartaoAprovado> fazerCalculoDeLimiteParaCartao(List<Cartao> cartaos, Integer idadeCliente, Long renda) {
 
         return cartaos.stream().map(cartao -> {
 
