@@ -18,6 +18,10 @@ Body (raw)
 ```
 Pegar a situacao do cliente
 
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `cpf` | `string` | **Obrigatório**. |
+
 Method: GET
 ```
 http://localhost:8080/avaliacoes-credito/situacao-cliente?cpf=xxx.xxx.xxx-xx
