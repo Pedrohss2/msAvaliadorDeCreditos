@@ -1,9 +1,9 @@
 package io.github.pedrohss2.msAvaliadorDeCreditos.service;
 
-import io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception.SolicitacaoCartaoException;
 import io.github.pedrohss2.msAvaliadorDeCreditos.model.DadosEmissaoCartao;
 import io.github.pedrohss2.msAvaliadorDeCreditos.model.ProtocoloSolicitacaoCartao;
 import io.github.pedrohss2.msAvaliadorDeCreditos.mqueue.EmissaoCartaoPublisher;
+import io.github.pedrohss2.msAvaliadorDeCreditos.service.exception.SolicitacaoCartaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

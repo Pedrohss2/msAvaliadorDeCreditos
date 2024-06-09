@@ -1,6 +1,5 @@
 package io.github.pedrohss2.msAvaliadorDeCreditos.controller;
 
-import io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception.SolicitacaoCartaoException;
 import io.github.pedrohss2.msAvaliadorDeCreditos.model.DadosEmissaoCartao;
 import io.github.pedrohss2.msAvaliadorDeCreditos.model.ProtocoloSolicitacaoCartao;
 import io.github.pedrohss2.msAvaliadorDeCreditos.service.SolicitarCartaoService;
@@ -20,12 +19,8 @@ public class SolicitacaoCartaoController {
 
     @PostMapping
     public ResponseEntity solicitaCartao(@RequestBody DadosEmissaoCartao dadosEmissaoCartao) {
-        try {
-            ProtocoloSolicitacaoCartao protocoloSolicitacaoCartao = solicitarCartaoService.solicitarEmissaoDeCartao(dadosEmissaoCartao);
-            return ResponseEntity.ok().body(protocoloSolicitacaoCartao);
-        }
-        catch (SolicitacaoCartaoException erro) {
-            return ResponseEntity.internalServerError().body(erro.getMessage());
-        }
+        ProtocoloSolicitacaoCartao protocoloSolicitacaoCartao = solicitarCartaoService.solicitarEmissaoDeCartao(dadosEmissaoCartao);
+
+        return ResponseEntity.ok().body(protocoloSolicitacaoCartao);
     }
 }

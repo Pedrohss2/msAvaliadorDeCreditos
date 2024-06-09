@@ -1,4 +1,4 @@
-package io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception;
+package io.github.pedrohss2.msAvaliadorDeCreditos.service.exception;
 
 public class ComunicacaoException extends RuntimeException {
 

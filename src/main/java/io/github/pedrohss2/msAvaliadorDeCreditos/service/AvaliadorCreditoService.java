@@ -1,14 +1,11 @@
 package io.github.pedrohss2.msAvaliadorDeCreditos.service;
 
 import feign.FeignException;
-import io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception.ComunicacaoException;
-import io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception.DadosClienteNaoEncontradoException;
-import io.github.pedrohss2.msAvaliadorDeCreditos.controller.exception.SolicitacaoCartaoException;
 import io.github.pedrohss2.msAvaliadorDeCreditos.model.*;
-import io.github.pedrohss2.msAvaliadorDeCreditos.mqueue.EmissaoCartaoPublisher;
 import io.github.pedrohss2.msAvaliadorDeCreditos.repository.CartaoClienteRepository;
 import io.github.pedrohss2.msAvaliadorDeCreditos.repository.ClientesRepository;
-import org.apache.http.protocol.HTTP;
+import io.github.pedrohss2.msAvaliadorDeCreditos.service.exception.ComunicacaoException;
+import io.github.pedrohss2.msAvaliadorDeCreditos.service.exception.DadosClienteNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
