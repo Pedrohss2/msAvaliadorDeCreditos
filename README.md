@@ -47,8 +47,8 @@ Body (pretty)
 ```JSON
 {
     "id": 1,
-    "cpf": "1041.834.829-21",
-    "endereco": "rua iguatemi n 160",
+    "cpf": "xxx.xxx.xxx-xx",
+    "endereco": "rua naosei",
     "limiteLiberado":  9000.00
 }
 ```
